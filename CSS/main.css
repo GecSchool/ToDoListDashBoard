@@ -1,0 +1,35 @@
+@import url('./reset.css');
+body{
+    background-color: #EAEFFB ;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 11fr 2fr;
+    grid-template-rows: 66px 1fr;
+}
+.navLeft{
+    background-color: #506BBF;
+}
+.navCenter{
+    background-color: #5974C8;
+}
+.navRight{
+    background-color: #506BBF;
+}
+.leftScreen{
+    background-color: #3A466B;
+}
+.mainScreen{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-color: #EAEFFB;
+}
+.mainScreen__nav{
+    width: 100%;
+    height: 66px;
+    background-color: white;
+}
+
+
+.blockShadow{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
