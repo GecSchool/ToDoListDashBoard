@@ -1,0 +1,5 @@
+.calendar{
+    background-color: white;
+    grid-row: 1 / 2;
+    border-radius: 10px;
+}
