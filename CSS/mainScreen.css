@@ -3,7 +3,7 @@
 @import url('./CompleteGraph.css');
 @import url('./ToDoList.css');
 @import url('./timeStatistics.css');
-
+@import url('./todayMemo.css');
 .mainScreen{
     width: 100%;
     height: 100%;
@@ -14,7 +14,7 @@
     background-color: #EAEFFB;
     display: grid;
     grid-template-columns: 6fr 3fr 2fr;
-    grid-template-rows: 7fr 3fr;
+    grid-template-rows: 2fr 5fr 3fr;
     gap: 30px;
     padding: 30px;
 }
