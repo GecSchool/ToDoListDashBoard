@@ -26,18 +26,38 @@
           <!-- hour check -->
         </div>
         <div class="ToDoList blockShadow">
-          <ul>
-            <li></li>
-          </ul>
+          <ul></ul>
+          <button class="addTDButton"></button>
+          <form action="">
+            <input class="ToDoNameInput hidden" type="text" />
+          </form>
           <!-- TDL -->
         </div>
         <div class="timeStatistics blockShadow">
           <!-- time statics -->
         </div>
-        <div class="CompleteGraph blockShadow">
-          <!-- complete radio -->
+        <div class="completeGraph">
+          <svg viewBox="0 0 36 36" class="circular-chart blue">
+            <path
+              class="circle-bg"
+              d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path
+              class="circle"
+              stroke-dasharray=""
+              d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <text x="18" y="20.35" class="percentage"></text>
+          </svg>
         </div>
       </div>
     </div>
+    <script src="JS/main.js"></script>
+    <script src="JS/completeGraph.js"></script>
+    <script src="JS/TDL.js"></script>
   </body>
 </html>

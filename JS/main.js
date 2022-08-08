@@ -15,7 +15,7 @@ class MainHander{
         if(this.recentTDL.id !== DIC_KEY){
             this.collectionOfData[this.recentTDL.id] = this.recentTDL
             this.recentTDL = new ToDoList()
-            localStorage.setItem(LOCAL_COLLECTION_KEY,stringify(this.collectionOfData))
+            localStorage.setItem(LOCAL_COLLECTION_KEY,JSON.stringify(this.collectionOfData))
             localStorage.setItem(LOCAL_RECENT_KEY,JSON.stringify(this.recentTDL))
         }
     }
