@@ -45,6 +45,10 @@ addButton.addEventListener('click',addToDo)
 const completeTD = (event)=>{
     if('SPAN' === event.target.tagName){
         event.target.parentElement.classList.toggle('complete')
+        if(event.target.parentElement.classList.contains('on')){
+            event.target.parentElement.classList.remove('on')
+            systemHandler.recentTDL.onId = ''
+        }
         systemHandler.recentTDL.ToDoList.forEach(element => {
             if(element.id==event.target.parentElement.id){
                 if(element.state){
@@ -56,6 +60,10 @@ const completeTD = (event)=>{
         });
     } else{
         event.target.classList.toggle('complete')
+        if(event.target.classList.contains('on')){
+            event.target.classList.remove('on')
+            systemHandler.recentTDL.onId = ''
+        }
         systemHandler.recentTDL.ToDoList.forEach(element => {
             if(element.id==event.target.id){
                 if(element.state){
@@ -74,6 +82,51 @@ const deleteTD = (event)=>{
     event.target.parentElement.remove()
     updateCircleGraph()
 }
+const onTD = (event)=>{
+    const ToDoList = document.querySelectorAll('.ToDoList>ul>li')
+    if(!event.target.classList.contains('complete')){
+        if('SPAN' === event.target.tagName){
+            if(systemHandler.recentTDL.onId){
+                if(systemHandler.recentTDL.onId === event.target.parentElement.id){
+                    systemHandler.recentTDL.onId = ''
+                    // off 
+                }
+                else{
+                    ToDoList.forEach((element)=>{
+                        if(element.id === systemHandler.recentTDL.onId){
+                            element.classList.remove('on')
+                        }
+                    })
+                    systemHandler.recentTDL.onId = event.target.parentElement.id
+                    // on
+                }
+            } else{
+                systemHandler.recentTDL.onId = event.target.parentElement.id
+                // on
+            }
+            event.target.parentElement.classList.toggle('on')
+        } else{
+            
+            if(systemHandler.recentTDL.onId){
+                if(systemHandler.recentTDL.onId == event.target.id){
+                    systemHandler.recentTDL.onId = ''    
+                }
+                else{
+                    ToDoList.forEach((element)=>{
+                        if(element.id === systemHandler.recentTDL.onId){
+                            element.classList.remove('on')
+                        }
+                    })
+                    systemHandler.recentTDL.onId = event.target.id
+                }
+            } else{
+                systemHandler.recentTDL.onId = event.target.id
+            }
+            event.target.classList.toggle('on')
+        }
+    }
+}
+
 const paintTD = (ToDo)=>{
     // paint ToDoThing just one line
     const list = document.createElement('li')
@@ -81,14 +134,26 @@ const paintTD = (ToDo)=>{
     if(ToDo.state){
         list.classList.add('complete')
     }
-    // list.addEventListener('click',startTD)
+    if(ToDo.id === systemHandler.recentTDL.onId){
+        list.classList.add('on')
+    }
+    list.addEventListener('click',onTD)
     list.addEventListener('dblclick',completeTD)    
     const button = document.createElement('button')
     button.addEventListener('click',deleteTD)
     const toDoName = document.createElement('span')
     toDoName.innerText = ToDo.toDoName
+    toDoName.classList.add('name')
     const toDoTime = document.createElement('span')
-    toDoTime.innerText = ToDo.time
+    toDoTime.classList.add('time')
+    const secondsToHms = (seconds) => {
+        seconds = Number(seconds);
+        const hour = Math.floor(seconds / 3600);
+        const min = Math.floor(seconds % 3600 / 60);
+        const sec = Math.floor(seconds % 3600 % 60);
+        return `${hour < 10 ?'0' + hour: hour}:${min<10 ? '0' + min: min}:${sec < 10 ? '0' + sec : sec}`; 
+    }
+    toDoTime.innerText = secondsToHms(ToDo.time)
     list.appendChild(toDoName)
     list.appendChild(toDoTime)
     list.appendChild(button)

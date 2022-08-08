@@ -1,7 +1,7 @@
-const circleGraph = document.querySelector('.circle')
-const percentageText = document.querySelector('.percentage')
 
 const updateCircleGraph = ()=>{
+    const circleGraph = document.querySelector('.circle')
+    const percentageText = document.querySelector('.percentage')
     // let percentage = 0
     let countTD = 0
     systemHandler.recentTDL.ToDoList.forEach(element => {

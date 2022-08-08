@@ -24,9 +24,9 @@ class ToDoList{
     constructor(){
         const date = new Date()
         this.ToDoList = []
-        this.totalTime = 0
+        this.totalTime = 0 //sec
         this.id = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`
-        this.on = null
+        this.onId = ''
     }
     
 }
@@ -35,7 +35,7 @@ class ThingToDo{
         this.toDoName = toDoName
         this.time = time
         this.state = state
-        this.id = Date.now()
+        this.id = String(Date.now())
     }
 }
 
