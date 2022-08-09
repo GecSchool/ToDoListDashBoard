@@ -20,6 +20,7 @@ const addToDo = (event)=>{
     const detectClickOutside = (event)=>{
         if(!ToDoNameInput.contains(event.target)&&!addButton.contains(event.target)){
             toggleHidden()
+            ToDoNameInput.value = ''
             document.removeEventListener('click',detectClickOutside)
             ToDoNameInput.removeEventListener('keypress',enterPress)
         }
@@ -39,6 +40,7 @@ const addToDo = (event)=>{
     }
     document.addEventListener('click',detectClickOutside)
     toggleHidden()
+    ToDoNameInput.focus()
     ToDoNameInput.addEventListener('keypress',enterPress)
 }
 addButton.addEventListener('click',addToDo)

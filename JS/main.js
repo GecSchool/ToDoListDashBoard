@@ -27,6 +27,7 @@ class ToDoList{
         this.totalTime = 0 //sec
         this.id = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`
         this.onId = ''
+        this.memo = ''
     }
     
 }
