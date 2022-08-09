@@ -63,7 +63,7 @@ const makeCalendar = (date) => {
         }
         document.querySelector('.dateBoard').appendChild(div)
     }
-    for(let i = today.getDate() + 1;i < curLastDay;i++){
+    for(let i = today.getDate() + 1;i <= curLastDay;i++){
         const key = `${curYear}${curMonth}${i}`
         const div = document.createElement('div')
         if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
