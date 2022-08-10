@@ -46,6 +46,9 @@ const makeCalendar = (date) => {
         div.appendChild(tmpSpan)
         for(let i = 0;i < systemHandler.recentTDL.ToDoList.length;i++){
             const span = document.createElement('span')
+            if(systemHandler.recentTDL.ToDoList[i].state){
+                span.classList.add('complete')
+            }
             span.innerHTML = systemHandler.recentTDL.ToDoList[i].toDoName
             div.appendChild(span)
         }

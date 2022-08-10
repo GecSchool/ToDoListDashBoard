@@ -4,7 +4,7 @@ const timeHandler = ()=>{
             return element.id === systemHandler.recentTDL.onId
         })
         systemHandler.recentTDL.ToDoList[index].time++
-        systemHandler.recentTDL.totalTime++
+        systemHandler.recentTDL.minutesEachHour[new Date().getHours()]++
         const timeSpan = document.querySelector('.on .time')
         const secondsToHms = (seconds) => {
             seconds = Number(seconds);
@@ -16,6 +16,7 @@ const timeHandler = ()=>{
         timeSpan.innerHTML = secondsToHms(systemHandler.recentTDL.ToDoList[index].time)
         localStorage.setItem('recentTDL',JSON.stringify(systemHandler.recentTDL))
     }
+    updateMinutesGraph(myChart)
 }
 timeHandler()
 setInterval(timeHandler,1000)

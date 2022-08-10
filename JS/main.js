@@ -24,7 +24,8 @@ class ToDoList{
     constructor(){
         const date = new Date()
         this.ToDoList = []
-        this.totalTime = 0 //sec
+        // this.totalTime = 0 //sec
+        this.minutesEachHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         this.id = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`
         this.onId = ''
         this.memo = ''

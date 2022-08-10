@@ -54,8 +54,9 @@
         <div class="timeStatistics blockShadow">
           <!-- time statics -->
         </div>
-        <div class="barGraph blockShadow">
+        <div class="todayTimeGraph blockShadow">
           <!-- hour check -->
+          <canvas id="hourGraph" width="400" height="800"></canvas>
         </div>
         <div class="completeGraph">
           <svg viewBox="0 0 36 36" class="circular-chart blue">
@@ -77,9 +78,11 @@
         </div>
       </div>
     </div>
+    <script src="/node_modules/chart.js/dist/chart.js"></script>
     <script src="JS/main.js"></script>
     <script src="JS/completeGraph.js"></script>
     <script src="JS/TDL.js"></script>
+    <script src="JS/todayTimeGraph.js"></script>
     <script src="JS/timeHandler.js"></script>
     <script src="JS/todayMemo.js"></script>
     <script src="JS/calendar.js"></script>

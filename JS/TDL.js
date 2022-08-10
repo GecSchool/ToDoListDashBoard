@@ -76,6 +76,7 @@ const completeTD = (event)=>{
             }
         });
     }
+    makeCalendar(new Date())
     updateCircleGraph()
     localStorage.setItem('recentTDL',JSON.stringify(systemHandler.recentTDL))
 }
@@ -86,8 +87,8 @@ const deleteTD = (event)=>{
 }
 const onTD = (event)=>{
     const ToDoList = document.querySelectorAll('.ToDoList>ul>li')
-    if(!event.target.classList.contains('complete')){
-        if('SPAN' === event.target.tagName){
+    if('SPAN' === event.target.tagName){
+        if(!event.target.parentElement.classList.contains('complete')){
             if(systemHandler.recentTDL.onId){
                 if(systemHandler.recentTDL.onId === event.target.parentElement.id){
                     systemHandler.recentTDL.onId = ''
@@ -107,8 +108,9 @@ const onTD = (event)=>{
                 // on
             }
             event.target.parentElement.classList.toggle('on')
-        } else{
-            
+        }
+    } else{
+        if(!event.target.classList.contains('complete')){
             if(systemHandler.recentTDL.onId){
                 if(systemHandler.recentTDL.onId == event.target.id){
                     systemHandler.recentTDL.onId = ''    
