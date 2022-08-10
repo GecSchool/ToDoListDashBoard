@@ -2,19 +2,23 @@
 @import url('./calendar.css');
 @import url('./CompleteGraph.css');
 @import url('./ToDoList.css');
-@import url('./timeStatistics.css');
 @import url('./todayMemo.css');
+@import url('./title.css');
 .mainScreen{
     width: 100%;
     height: 100%;
-    display: inline-block;
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+    /* align-items: center; */
+    background-color: #EAEFFB;
 }
 .gridContainer{
-    height: 100%;
-    background-color: #EAEFFB;
+    
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 6fr 3fr 2fr;
-    grid-template-rows: 2fr 5fr 3fr;
+    grid-template-columns: 400px 500px 400px 300px;
+    grid-template-rows: 200px 400px 200px;
     gap: 30px;
     padding: 30px;
 }
