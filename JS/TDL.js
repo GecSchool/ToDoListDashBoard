@@ -8,7 +8,7 @@ const appendToDo = (tdl,toDoName,time,state)=>{
 }
 const deleteToDo = (targetId)=>{
     systemHandler.recentTDL.ToDoList = systemHandler.recentTDL.ToDoList.filter((toDo)=>{
-        return toDo.id !== parseInt(targetId)
+        return toDo.id !== targetId
     })
     localStorage.setItem('recentTDL',JSON.stringify(systemHandler.recentTDL))
 }
@@ -135,6 +135,8 @@ const paintTD = (ToDo)=>{
     // paint ToDoThing just one line
     const list = document.createElement('li')
     list.id = ToDo.id
+    list.classList.add('TD')
+    list.classList.add('blockShadow')
     if(ToDo.state){
         list.classList.add('complete')
     }
@@ -143,7 +145,9 @@ const paintTD = (ToDo)=>{
     }
     list.addEventListener('click',onTD)
     list.addEventListener('dblclick',completeTD)    
-    const button = document.createElement('button')
+    const button = document.createElement('span')
+    button.innerHTML = 'close'
+    button.classList.add('material-symbols-outlined')
     button.addEventListener('click',deleteTD)
     const toDoName = document.createElement('span')
     toDoName.innerText = ToDo.toDoName

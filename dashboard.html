@@ -5,15 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <link rel="stylesheet" href="CSS/main.css" />
   </head>
   <body>
     <div class="mainScreen blockShadow">
       <div class="gridContainer">
         <div class="title">
-          <h2>Devshboard</h2>
+          <h1>Devsh Board</h1>
         </div>
         <div class="todayMemo blockShadow">
+          <div class="todayMemoTitle">
+            <h2>Today Memo</h2>
+          </div>
           <form action="">
             <input class="Memo hidden" type="text" />
           </form>
@@ -22,19 +29,26 @@
         <div class="todayTimeGraph">
           <canvas id="hourGraph" width="400" height="800"></canvas>
         </div>
-        <div class="ToDoList blockShadow">
+        <div class="ToDoList">
+          <h2>To Do List</h2>
           <ul></ul>
-          <button class="addTDButton"></button>
+          <button class="addTDButton">
+            <span class="material-symbols-outlined"> add_circle </span>
+          </button>
           <form action="">
             <input class="ToDoNameInput hidden" type="text" />
           </form>
           <!-- TDL -->
         </div>
-        <div class="calendar blockShadow">
-          <div>
-            <div></div>
-            <h2></h2>
-            <div></div>
+        <div class="calendar">
+          <div class="calendarHead">
+            <span class="material-symbols-outlined preMonth">
+              arrow_back_ios
+            </span>
+            <h2 class="calendarTitle"></h2>
+            <span class="material-symbols-outlined nextMonth">
+              arrow_forward_ios
+            </span>
           </div>
           <div class="grid dateHead">
             <div>Sun</div>
@@ -50,12 +64,6 @@
 
         <div class="completeGraph">
           <svg viewBox="0 0 36 36" class="circular-chart blue">
-            <path
-              class="circle-bg blockShadow"
-              d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
             <path
               class="circle blockShadow"
               stroke-dasharray=""

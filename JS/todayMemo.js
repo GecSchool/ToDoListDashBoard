@@ -6,20 +6,23 @@ const memoHandler = ()=>{
         memoInput.classList.toggle('hidden')
         todayMemo.classList.toggle('hidden')
     }
+    memoInput.value = systemHandler.recentTDL.memo
+    todayMemo.innerHTML = systemHandler.recentTDL.memo
     const memoEventHandler = ()=>{
         memoToggleHidden()
         memoInput.focus()
-        memoInput.addEventListener('keypress',(evnet)=>{
+        const enterPress = (evnet)=>{
             if(evnet.key === 'Enter'){
-                console.log(todayMemo.innerHTML)
                 evnet.preventDefault()
                 memoToggleHidden()
+                memoInput.removeEventListener('keypress',enterPress)
                 // end input
             }
             todayMemo.innerHTML = memoInput.value
-        })
+            systemHandler.recentTDL.memo = todayMemo.innerHTML
+        }
+        memoInput.addEventListener('keypress',enterPress)
     }
-    // memoInput.value = systemHandler.recentTDL.memo
     memoBox.addEventListener('click',memoEventHandler)
 }
 

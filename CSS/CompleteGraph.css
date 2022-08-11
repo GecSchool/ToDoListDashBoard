@@ -20,7 +20,7 @@
     stroke-linecap: round;
 }
 .circular-chart.blue .circle {
-    stroke: #506BBF;
+    stroke: rgb(80, 107, 191,0.5);
 }
 
 .percentage {

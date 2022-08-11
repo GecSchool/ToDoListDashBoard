@@ -7,7 +7,7 @@ const makeCalendar = (date) => {
     const curLastDay = new Date(curYear,curMonth + 1,0).getDate()
     
     document.querySelector('.dateBoard').innerHTML = ''
-
+    document.querySelector('.calendarTitle').innerHTML = `${curYear}.  ${curMonth}`
     for(let i = 0;i < preLastDay;i++){
         const tmpHtml = document.createElement('div')
         tmpHtml.classList.add('noColor')
@@ -23,9 +23,12 @@ const makeCalendar = (date) => {
             tmpSpan.innerHTML = i
             div.appendChild(tmpSpan)
             for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
-                const span = document.createElement('span')
+                const span = document.createElement('p')
                 if(systemHandler.collectionOfData[key].ToDoList[j].state){
                     span.classList.add('complete')
+                }
+                if(j>3){
+                    span.classList.add('hidden')
                 }
                 span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
                 div.appendChild(span)
@@ -45,9 +48,12 @@ const makeCalendar = (date) => {
         tmpSpan.innerText = today.getDate()
         div.appendChild(tmpSpan)
         for(let i = 0;i < systemHandler.recentTDL.ToDoList.length;i++){
-            const span = document.createElement('span')
+            const span = document.createElement('p')
             if(systemHandler.recentTDL.ToDoList[i].state){
                 span.classList.add('complete')
+            }
+            if(i>3){
+                span.classList.add('hidden')
             }
             span.innerHTML = systemHandler.recentTDL.ToDoList[i].toDoName
             div.appendChild(span)
@@ -57,9 +63,12 @@ const makeCalendar = (date) => {
         const div = document.createElement('div')
         const key = `${curYear}${curMonth}${today.getDate()}`
         for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
-            const span = document.createElement('span')
+            const span = document.createElement('p')
             if(systemHandler.collectionOfData[key].ToDoList[i].state){
                 span.classList.add('complete')
+            }
+            if(i>3){
+                span.classList.add('hidden')
             }
             span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
             div.appendChild(span)
@@ -74,9 +83,12 @@ const makeCalendar = (date) => {
             tmpSpan.innerHTML = i
             div.appendChild(tmpSpan)
             for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
-                const span = document.createElement('span')
+                const span = document.createElement('p')
                 if(systemHandler.collectionOfData[key].ToDoList[j].state){
                     span.className.add('complete')
+                }
+                if(j>3){
+                    span.classList.add('hidden')
                 }
                 span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
                 div.appendChild(span)
@@ -105,12 +117,12 @@ window.onload = () => {
     makeCalendar(date)
     
     // 이전달 이동
-    // document.querySelector(`.prevDay`).onclick = () => {
+    // document.querySelector(`.preMonth`).onclick = () => {
     //   makeCalendar(new Date(date.setMonth(date.getMonth() - 1)));
     // }
     
     // // 다음달 이동
-    // document.querySelector(`.nextDay`).onclick = () => {
+    // document.querySelector(`.nextMonth`).onclick = () => {
     //   makeCalendar(new Date(date.setMonth(date.getMonth() + 1)));
     // }
 };
