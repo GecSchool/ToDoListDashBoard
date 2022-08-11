@@ -7,7 +7,7 @@ const makeCalendar = (date) => {
     const curLastDay = new Date(curYear,curMonth + 1,0).getDate()
     
     document.querySelector('.dateBoard').innerHTML = ''
-    document.querySelector('.calendarTitle').innerHTML = `${curYear}.  ${curMonth}`
+    document.querySelector('.calendarTitle').innerHTML = `${curYear}.  ${curMonth+1}`
     for(let i = 0;i < preLastDay;i++){
         const tmpHtml = document.createElement('div')
         tmpHtml.classList.add('noColor')
@@ -61,16 +61,22 @@ const makeCalendar = (date) => {
     } else{
         const div = document.createElement('div')
         const key = `${curYear}${curMonth}${today.getDate()}`
-        for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
-            const span = document.createElement('p')
-            if(systemHandler.collectionOfData[key].ToDoList[i].state){
-                span.classList.add('complete')
+        if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
+            for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
+                const span = document.createElement('p')
+                if(systemHandler.collectionOfData[key].ToDoList[i].state){
+                    span.classList.add('complete')
+                }
+                if(i>3){
+                    span.classList.add('hidden')
+                }
+                span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
+                div.appendChild(span)
             }
-            if(i>3){
-                span.classList.add('hidden')
-            }
-            span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
-            div.appendChild(span)
+        } else{
+            const span = document.createElement('span')
+            span.innerHTML = today.getDate()
+            div.appendChild(span) 
         }
         document.querySelector('.dateBoard').appendChild(div)
     }
@@ -116,12 +122,13 @@ window.onload = () => {
     makeCalendar(date)
     
     // 이전달 이동
-    // document.querySelector(`.preMonth`).onclick = () => {
-    //   makeCalendar(new Date(date.setMonth(date.getMonth() - 1)));
-    // }
+    document.querySelector(`.preMonth`).onclick = () => {
+        console.log(1)
+      makeCalendar(new Date(date.setMonth(date.getMonth() - 1)));
+    }
     
-    // // 다음달 이동
-    // document.querySelector(`.nextMonth`).onclick = () => {
-    //   makeCalendar(new Date(date.setMonth(date.getMonth() + 1)));
-    // }
+    // 다음달 이동
+    document.querySelector(`.nextMonth`).onclick = () => {
+      makeCalendar(new Date(date.setMonth(date.getMonth() + 1)));
+    }
 };

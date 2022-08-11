@@ -36,6 +36,7 @@ const addToDo = (event)=>{
             updateCircleGraph()
             document.removeEventListener('click',detectClickOutside)
             ToDoNameInput.removeEventListener('keypress',enterPress)
+            makeCalendar(new Date())
         }
     }
     document.addEventListener('click',detectClickOutside)
@@ -84,6 +85,7 @@ const deleteTD = (event)=>{
     deleteToDo(event.target.parentElement.id)
     event.target.parentElement.remove()
     updateCircleGraph()
+    makeCalendar(new Date())
 }
 const onTD = (event)=>{
     const ToDoList = document.querySelectorAll('.ToDoList>ul>li')
@@ -146,7 +148,7 @@ const paintTD = (ToDo)=>{
     list.addEventListener('click',onTD)
     list.addEventListener('dblclick',completeTD)    
     const button = document.createElement('span')
-    button.innerHTML = 'close'
+    button.innerHTML = 'cancel'
     button.classList.add('material-symbols-outlined')
     button.addEventListener('click',deleteTD)
     const toDoName = document.createElement('span')
