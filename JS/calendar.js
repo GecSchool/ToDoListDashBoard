@@ -17,7 +17,6 @@ const makeCalendar = (date) => {
     for(let i = 1; i < today.getDate();i++){
         const key = `${curYear}${curMonth}${i}`
         const div = document.createElement('div')
-        console.log(key)
         if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
             const tmpSpan = document.createElement('span')
             tmpSpan.innerHTML = i

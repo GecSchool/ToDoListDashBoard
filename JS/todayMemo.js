@@ -16,7 +16,6 @@ const memoHandler = ()=>{
                 evnet.preventDefault()
                 memoToggleHidden()
                 memoInput.removeEventListener('keypress',enterPress)
-                // end input
             }
             todayMemo.innerHTML = memoInput.value
             systemHandler.recentTDL.memo = todayMemo.innerHTML
