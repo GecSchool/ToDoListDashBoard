@@ -1,4 +1,3 @@
-
 const updateCircleGraph = ()=>{
     const circleGraph = document.querySelector('.circle')
     const percentageText = document.querySelector('.percentage')

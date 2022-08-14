@@ -1,43 +1,73 @@
+/*
+    @copyright Dchool
+    Source Description 
+    If you input date(dataType===Date) paint calendar
+*/
 const makeCalendar = (date) => {
-    // const Date = new Date(date)
     const today = new Date()
     const curYear = new Date(date).getFullYear()
     const curMonth = new Date(date).getMonth()
     const preLastDay = new Date(curYear, curMonth, 1).getDay()
     const curLastDay = new Date(curYear,curMonth + 1,0).getDate()
     
-    document.querySelector('.dateBoard').innerHTML = ''
     document.querySelector('.calendarTitle').innerHTML = `${curYear}.  ${curMonth+1}`
+    document.querySelector('.dateBoard').innerHTML = ''
     for(let i = 0;i < preLastDay;i++){
+        // append previous month day(must be empty) 
         const tmpHtml = document.createElement('div')
         tmpHtml.classList.add('noColor')
         document.querySelector('.dateBoard').appendChild(tmpHtml)
     }
-    
-    for(let i = 1; i < today.getDate();i++){
-        const key = `${curYear}${curMonth}${i}`
+    const paintADay = (theDay, date)=>{
         const div = document.createElement('div')
-        if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
+        if(typeof theDay !== 'undefined'){
             const tmpSpan = document.createElement('span')
-            tmpSpan.innerHTML = i
+            tmpSpan.innerHTML = date
             div.appendChild(tmpSpan)
-            for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
+            for(let i = 0;i < theDay.ToDoList.length;i++){
                 const span = document.createElement('p')
-                if(systemHandler.collectionOfData[key].ToDoList[j].state){
+                if(theDay.ToDoList[i].state){
                     span.classList.add('complete')
                 }
-                if(j>3){
+                if(i>3){
                     span.classList.add('hidden')
                 }
-                span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
+                span.innerText = theDay.ToDoList[i].toDoName
                 div.appendChild(span)
             }
         } else{
             const span = document.createElement('span')
-            span.innerText = i
+            span.innerText = date
             div.appendChild(span)
         }
         document.querySelector('.dateBoard').appendChild(div)
+    }
+    for(let i = 1; i < today.getDate();i++){
+        const key = `${curYear}${curMonth}${i}`
+        paintADay(systemHandler.collectionOfData[key],i)
+        // const div = document.createElement('div')
+        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
+        //     const tmpSpan = document.createElement('span')
+        //     tmpSpan.innerHTML = i
+        //     div.appendChild(tmpSpan)
+        //     for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
+        //         const span = document.createElement('p')
+        //         if(systemHandler.collectionOfData[key].ToDoList[j].state){
+        //             span.classList.add('complete')
+        //         }
+        //         if(j>3){
+        //             span.classList.add('hidden')
+        //         }
+        //         span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
+        //         div.appendChild(span)
+        //     }
+        // } else{
+        //     const span = document.createElement('span')
+        //     span.innerText = i
+        //     div.appendChild(span)
+        // }
+        // document.querySelector('.dateBoard').appendChild(div)
+        
     }
     if(curMonth === today.getMonth()&&curYear === today.getFullYear()){
         // recentTDL
@@ -59,51 +89,52 @@ const makeCalendar = (date) => {
         }
         document.querySelector('.dateBoard').appendChild(div)
     } else{
-        const div = document.createElement('div')
         const key = `${curYear}${curMonth}${today.getDate()}`
-        if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
-            for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
-                const span = document.createElement('p')
-                if(systemHandler.collectionOfData[key].ToDoList[i].state){
-                    span.classList.add('complete')
-                }
-                if(i>3){
-                    span.classList.add('hidden')
-                }
-                span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
-                div.appendChild(span)
-            }
-        } else{
-            const span = document.createElement('span')
-            span.innerHTML = today.getDate()
-            div.appendChild(span) 
-        }
-        document.querySelector('.dateBoard').appendChild(div)
+        paintADay(systemHandler.collectionOfData[key],today.getDate())
+        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
+        //     for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
+        //         const span = document.createElement('p')
+        //         if(systemHandler.collectionOfData[key].ToDoList[i].state){
+        //             span.classList.add('complete')
+        //         }
+        //         if(i>3){
+        //             span.classList.add('hidden')
+        //         }
+        //         span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
+        //         div.appendChild(span)
+        //     }
+        // } else{
+        //     const span = document.createElement('span')
+        //     span.innerHTML = today.getDate()
+        //     div.appendChild(span) 
+        // }
+        // document.querySelector('.dateBoard').appendChild(div)
     }
     for(let i = today.getDate() + 1;i <= curLastDay;i++){
         const key = `${curYear}${curMonth}${i}`
-        const div = document.createElement('div')
-        if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
-            const tmpSpan = document.createElement('span')
-            tmpSpan.innerHTML = i
-            div.appendChild(tmpSpan)
-            for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
-                const span = document.createElement('p')
-                if(systemHandler.collectionOfData[key].ToDoList[j].state){
-                    span.className.add('complete')
-                }
-                if(j>3){
-                    span.classList.add('hidden')
-                }
-                span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
-                div.appendChild(span)
-            }
-        } else{
-            const span = document.createElement('span')
-            span.innerHTML = i
-            div.appendChild(span)            
-        }
-        document.querySelector('.dateBoard').appendChild(div)
+        paintADay(systemHandler.collectionOfData[key],i)
+        // const div = document.createElement('div')
+        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
+        //     const tmpSpan = document.createElement('span')
+        //     tmpSpan.innerHTML = i
+        //     div.appendChild(tmpSpan)
+        //     for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
+        //         const span = document.createElement('p')
+        //         if(systemHandler.collectionOfData[key].ToDoList[j].state){
+        //             span.className.add('complete')
+        //         }
+        //         if(j>3){
+        //             span.classList.add('hidden')
+        //         }
+        //         span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
+        //         div.appendChild(span)
+        //     }
+        // } else{
+        //     const span = document.createElement('span')
+        //     span.innerHTML = i
+        //     div.appendChild(span)            
+        // }
+        // document.querySelector('.dateBoard').appendChild(div)
     }
     
     let nextDay = (preLastDay + curLastDay) % 7
