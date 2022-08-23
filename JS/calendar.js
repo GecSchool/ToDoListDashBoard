@@ -45,29 +45,6 @@ const makeCalendar = (date) => {
     for(let i = 1; i < today.getDate();i++){
         const key = `${curYear}${curMonth}${i}`
         paintADay(systemHandler.collectionOfData[key],i)
-        // const div = document.createElement('div')
-        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
-        //     const tmpSpan = document.createElement('span')
-        //     tmpSpan.innerHTML = i
-        //     div.appendChild(tmpSpan)
-        //     for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
-        //         const span = document.createElement('p')
-        //         if(systemHandler.collectionOfData[key].ToDoList[j].state){
-        //             span.classList.add('complete')
-        //         }
-        //         if(j>3){
-        //             span.classList.add('hidden')
-        //         }
-        //         span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
-        //         div.appendChild(span)
-        //     }
-        // } else{
-        //     const span = document.createElement('span')
-        //     span.innerText = i
-        //     div.appendChild(span)
-        // }
-        // document.querySelector('.dateBoard').appendChild(div)
-        
     }
     if(curMonth === today.getMonth()&&curYear === today.getFullYear()){
         // recentTDL
@@ -91,50 +68,11 @@ const makeCalendar = (date) => {
     } else{
         const key = `${curYear}${curMonth}${today.getDate()}`
         paintADay(systemHandler.collectionOfData[key],today.getDate())
-        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
-        //     for(let i = 0;i < systemHandler.collectionOfData[key].ToDoList.length;i++){
-        //         const span = document.createElement('p')
-        //         if(systemHandler.collectionOfData[key].ToDoList[i].state){
-        //             span.classList.add('complete')
-        //         }
-        //         if(i>3){
-        //             span.classList.add('hidden')
-        //         }
-        //         span.innerHTML = systemHandler.collectionOfData[key].ToDoList[i].toDoName
-        //         div.appendChild(span)
-        //     }
-        // } else{
-        //     const span = document.createElement('span')
-        //     span.innerHTML = today.getDate()
-        //     div.appendChild(span) 
-        // }
-        // document.querySelector('.dateBoard').appendChild(div)
+        
     }
     for(let i = today.getDate() + 1;i <= curLastDay;i++){
         const key = `${curYear}${curMonth}${i}`
         paintADay(systemHandler.collectionOfData[key],i)
-        // const div = document.createElement('div')
-        // if(typeof systemHandler.collectionOfData[key] !== 'undefined'){
-        //     const tmpSpan = document.createElement('span')
-        //     tmpSpan.innerHTML = i
-        //     div.appendChild(tmpSpan)
-        //     for(let j = 0;j < systemHandler.collectionOfData[key].ToDoList.length;j++){
-        //         const span = document.createElement('p')
-        //         if(systemHandler.collectionOfData[key].ToDoList[j].state){
-        //             span.className.add('complete')
-        //         }
-        //         if(j>3){
-        //             span.classList.add('hidden')
-        //         }
-        //         span.innerText = systemHandler.collectionOfData[key].ToDoList[j].toDoName
-        //         div.appendChild(span)
-        //     }
-        // } else{
-        //     const span = document.createElement('span')
-        //     span.innerHTML = i
-        //     div.appendChild(span)            
-        // }
-        // document.querySelector('.dateBoard').appendChild(div)
     }
     
     let nextDay = (preLastDay + curLastDay) % 7
@@ -146,7 +84,6 @@ const makeCalendar = (date) => {
         document.querySelector('.dateBoard').appendChild(tmpHtml)
     }
 }
-
 window.onload = () => {
     const date = new Date()
    

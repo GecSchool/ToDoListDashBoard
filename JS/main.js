@@ -30,7 +30,6 @@ class ToDoList{
         this.onId = ''
         this.memo = ''
     }
-    
 }
 class ThingToDo{
     constructor(toDoName,time,state = false){
@@ -42,12 +41,3 @@ class ThingToDo{
 }
 
 const systemHandler = new MainHander()
-
-// const appendTD = (toDoName,time,state)=>{
-//     this.ToDoList.push(new ThingToDo(toDoName,time,state))
-// }
-// const deleteTD = (targetId)=>{
-//     this.ToDoList = this.ToDoList.filter((toDo)=>{
-//         toDo.id !== parseInt(targetId)
-//     })
-// }
